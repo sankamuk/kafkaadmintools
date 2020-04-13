@@ -1,21 +1,15 @@
 package com.mukherjee.sankar.kafka.kafkaadmintools.services;
 
-import com.mukherjee.sankar.kafka.kafkaadmintools.model.ACL;
 import com.mukherjee.sankar.kafka.kafkaadmintools.model.Topic;
 import com.mukherjee.sankar.kafka.kafkaadmintools.model.Topic.TopicBuilder;
 import org.apache.kafka.clients.admin.AdminClient;
 import org.apache.kafka.clients.admin.ListTopicsOptions;
-import org.apache.kafka.common.acl.*;
-import org.apache.kafka.common.resource.Resource;
-import org.apache.kafka.common.resource.ResourceFilter;
-import org.apache.kafka.common.resource.ResourceType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PreDestroy;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.concurrent.ExecutionException;

@@ -1,10 +1,7 @@
 package com.mukherjee.sankar.kafka.kafkaadmintools.services;
 
 import com.mukherjee.sankar.kafka.kafkaadmintools.model.ACL;
-import com.mukherjee.sankar.kafka.kafkaadmintools.model.Topic;
-import com.mukherjee.sankar.kafka.kafkaadmintools.model.Topic.TopicBuilder;
 import org.apache.kafka.clients.admin.AdminClient;
-import org.apache.kafka.clients.admin.ListTopicsOptions;
 import org.apache.kafka.common.acl.*;
 import org.apache.kafka.common.resource.Resource;
 import org.apache.kafka.common.resource.ResourceFilter;

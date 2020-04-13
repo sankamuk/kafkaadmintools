@@ -1,9 +1,7 @@
 package com.mukherjee.sankar.kafka.kafkaadmintools.controller;
 
 import com.mukherjee.sankar.kafka.kafkaadmintools.model.ACL;
-import com.mukherjee.sankar.kafka.kafkaadmintools.model.Topic;
 import com.mukherjee.sankar.kafka.kafkaadmintools.services.ACLService;
-import com.mukherjee.sankar.kafka.kafkaadmintools.services.TopicService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
