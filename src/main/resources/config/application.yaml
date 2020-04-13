@@ -1,0 +1,11 @@
+kafka:
+  admin:
+    bootstrap.servers: server:9093
+    security.protocol: SSL
+    ssl.truststore.location: /Users/apple/TEST/springboot/kafka-admin-api/ssl/truststore.jks
+    ssl.truststore.password: changeit
+    ssl.keystore.location: /Users/apple/TEST/springboot/kafka-admin-api/ssl/keystore.jks
+    ssl.keystore.password: changeit
+
+server:
+  port: 8080
