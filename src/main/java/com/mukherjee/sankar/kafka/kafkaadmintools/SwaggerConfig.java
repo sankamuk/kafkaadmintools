@@ -27,8 +27,11 @@ public class SwaggerConfig {
                 regex("/acl/*"),
                 regex("/topics.*"),
                 regex("/topics/*"),
+                regex("/process.*"),
+                regex("/process/*"),
                 regex("/services.*"),
                 regex("/services/*"));
+
     }
 
     private ApiInfo apiInfo() {
