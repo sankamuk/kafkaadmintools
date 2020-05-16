@@ -11,10 +11,10 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.PreDestroy;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeUnit;
-import java.io.InputStream;
 
 @Service
 public class ProcessService {
@@ -34,37 +34,26 @@ public class ProcessService {
     public Collection<Process> getProcessState(String processName)
             throws IOException, InterruptedException, ExecutionException, JSchException {
 
+        Collection<Process> result = new ArrayList<Process>();
         Collection<Node> nodes = adminClient.describeCluster().nodes().get();
         for(Node broker: nodes){
             LOG.info("Host: "+broker.host());
-
-            java.util.Properties config = new java.util.Properties();
-            config.put("StrictHostKeyChecking", "no");
-            JSch jsch = new JSch();
-            Session session=jsch.getSession("root", broker.host(), 22);
-            session.setPassword("x");
-            session.setConfig(config);
-            session.connect();
-            LOG.info("Connected");
-
-            Channel channel = session.openChannel("exec");
-            ((ChannelExec)channel).setCommand("ls");
-            InputStream commandOutput = channel.getInputStream();
-            channel.connect();
-            int readByte = commandOutput.read();
-
-            StringBuilder outputBuffer = new StringBuilder();
-            while(readByte != 0xffffffff)
-            {
-                outputBuffer.append((char)readByte);
-                readByte = commandOutput.read();
+            if (ServiceHelper.runRemoteCommand(broker.host(), "/opt/kafka/bin/kafka status", "started")){
+                LOG.info("Success");
+                result.add(Process.ProcessBuilder.aProcess()
+                        .withHostName(broker.host())
+                        .withState("Running")
+                        .build());
+            } else {
+                LOG.info("Failed");
+                result.add(Process.ProcessBuilder.aProcess()
+                        .withHostName(broker.host())
+                        .withState("Stopped")
+                        .build());
             }
 
-            LOG.info(outputBuffer.toString());
-
-            channel.disconnect();
         }
 
-        return null;
+        return result;
     }
 }

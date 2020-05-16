@@ -29,8 +29,8 @@ public class SwaggerConfig {
                 regex("/topics/*"),
                 regex("/process.*"),
                 regex("/process/*"),
-                regex("/services.*"),
-                regex("/services/*"));
+                regex("/topicconfig.*"),
+                regex("/topicconfig/*"));
 
     }
 
