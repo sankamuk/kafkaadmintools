@@ -1,5 +1,8 @@
 # Kafka Admin Tool
 
+![SpringBoot](https://img.shields.io/badge/language-SpringBoot-brightgreen.svg)
+![Kafka](https://img.shields.io/badge/Library-Kafka-brightgreen.svg)
+
 A Java Spring Boot based tool to manage Kafka Cluster.
 
 Features:
